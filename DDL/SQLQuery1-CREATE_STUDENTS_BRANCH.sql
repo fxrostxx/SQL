@@ -11,7 +11,7 @@ CREATE TABLE Groups
 (
 	group_id    INT           PRIMARY KEY,
 	group_name  NVARCHAR(24)  NOT NULL,
-	major       TINYINT       NOT NULL CONSTRAINT FK_Groups_Major FOREIGN KEY REFERENCES Majors(major_id)
+	major       TINYINT       NOT NULL CONSTRAINT FK_Groups_Major   FOREIGN KEY REFERENCES Majors(major_id)
 );
 CREATE TABLE Students
 (
@@ -22,4 +22,4 @@ CREATE TABLE Students
 	birth_date  date          NOT NULL,
 	[group]     INT           NOT NULL CONSTRAINT FK_Students_Group FOREIGN KEY REFERENCES Groups(group_id)
 );
---DROP TABLE Students, Groups, Majors
+--DROP TABLE Students, Groups, Majors;

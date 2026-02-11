@@ -39,6 +39,18 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery2-CREATE_TEACHERS_AND_SUBJECTS.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery3-CREATE_SCHEDULE_EXAMS_GRADES_HOMEWORKS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery3-CREATE_SCHEDULE_EXAMS_GRADES_HOMEWORKS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery4-CREATE_DATABASE_ALL_IN_ONE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery4-CREATE_DATABASE_ALL_IN_ONE.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">

@@ -48,4 +48,4 @@ CREATE TABLE DependentSubjects
 	CONSTRAINT FK_DS_Subject   FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
 	CONSTRAINT FK_DS_Dependent FOREIGN KEY (dependent_subject) REFERENCES Subjects(subject_id)
 );
---DROP TABLE SubjectsMajorsRelation, TeachersSubjectsRelation, RequiredSubjects, DependentSubjects, Teachers, Subjects
+--DROP TABLE SubjectsMajorsRelation, TeachersSubjectsRelation, RequiredSubjects, DependentSubjects, Teachers, Subjects;
