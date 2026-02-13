@@ -128,8 +128,6 @@ CREATE TABLE Homeworks
 CREATE TABLE ResultsHW
 (
 	student           INT             NOT NULL CONSTRAINT FK_ResultsHW_Student  FOREIGN KEY REFERENCES Students(student_id),
-	--[group]           INT             NOT NULL CONSTRAINT FK_ResultsHW_Group    FOREIGN KEY REFERENCES Groups(group_id),
-	--lesson            BIGINT          NOT NULL CONSTRAINT FK_ResultsHW_Homework FOREIGN KEY REFERENCES Homeworks(lesson),
 	[group]           INT             NOT NULL,
 	lesson            BIGINT          NOT NULL,
 	result            VARBINARY(1024) NULL,
