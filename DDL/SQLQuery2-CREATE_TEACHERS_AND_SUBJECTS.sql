@@ -21,8 +21,8 @@ CREATE TABLE SubjectsMajorsRelation
 	subject           SMALLINT,
 	major             TINYINT,
 	PRIMARY KEY(subject, major),
-	CONSTRAINT FK_SMR_Subject  FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
-	CONSTRAINT FK_SMR_Major    FOREIGN KEY (major)             REFERENCES Majors(major_id)
+	CONSTRAINT FK_SMR_Subjects FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
+	CONSTRAINT FK_SMR_Majors   FOREIGN KEY (major)             REFERENCES Majors(major_id)
 );
 CREATE TABLE TeachersSubjectsRelation
 (
@@ -37,7 +37,7 @@ CREATE TABLE RequiredSubjects
 	subject           SMALLINT,
 	required_subject  SMALLINT,
 	PRIMARY KEY(subject, required_subject),
-	CONSTRAINT FK_RS_Subject   FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
+	CONSTRAINT FK_RS_Subjects  FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
 	CONSTRAINT FK_RS_Required  FOREIGN KEY (required_subject)  REFERENCES Subjects(subject_id)
 );
 CREATE TABLE DependentSubjects
@@ -45,7 +45,7 @@ CREATE TABLE DependentSubjects
 	subject           SMALLINT,
 	dependent_subject SMALLINT,
 	PRIMARY KEY(subject, dependent_subject),
-	CONSTRAINT FK_DS_Subject   FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
+	CONSTRAINT FK_DS_Subjects  FOREIGN KEY (subject)           REFERENCES Subjects(subject_id),
 	CONSTRAINT FK_DS_Dependent FOREIGN KEY (dependent_subject) REFERENCES Subjects(subject_id)
 );
 --DROP TABLE SubjectsMajorsRelation, TeachersSubjectsRelation, RequiredSubjects, DependentSubjects, Teachers, Subjects;
