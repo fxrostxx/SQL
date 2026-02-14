@@ -26,11 +26,30 @@ CREATE TABLE Majors
 	major_id          TINYINT        PRIMARY KEY,
 	major_name        NVARCHAR(128)  NOT NULL
 );
+CREATE TABLE StudyForms
+(
+	study_form_id   TINYINT       PRIMARY KEY,
+	study_form_name NVARCHAR(256) NOT NULL
+);
+CREATE TABLE StudyDays
+(
+	study_days_id   TINYINT       PRIMARY KEY,
+	study_days      NVARCHAR(256) NOT NULL
+);
+CREATE TABLE StudyTime
+(
+	study_time_id   TINYINT       PRIMARY KEY,
+	start_time      time          NOT NULL,
+	end_time        time          NOT NULL
+);
 CREATE TABLE Groups
 (
 	group_id          INT            PRIMARY KEY,
 	group_name        NVARCHAR(24)   NOT NULL,
-	major             TINYINT        NOT NULL CONSTRAINT FK_Groups_Majors      FOREIGN KEY REFERENCES Majors(major_id)
+	major             TINYINT        NOT NULL CONSTRAINT FK_Groups_Majors      FOREIGN KEY REFERENCES Majors(major_id),
+	study_form        TINYINT        NOT NULL CONSTRAINT FK_Groups_StudyForms  FOREIGN KEY REFERENCES StudyForms(study_form_id),
+	study_days        TINYINT        NOT NULL CONSTRAINT FK_Groups_StudyDays   FOREIGN KEY REFERENCES StudyDays(study_days_id),
+	study_time        TINYINT        NOT NULL CONSTRAINT FK_Groups_StudyTime   FOREIGN KEY REFERENCES StudyTime(study_time_id)
 );
 CREATE TABLE Students
 (
@@ -41,7 +60,7 @@ CREATE TABLE Students
 	birth_date        date           NOT NULL,
 	[group]           INT            NOT NULL CONSTRAINT FK_Students_Groups    FOREIGN KEY REFERENCES Groups(group_id)
 );
---DROP TABLE Students, Groups, Majors;
+--DROP TABLE Students, Groups, Majors, StudyForms, StudyDays, StudyTime;
 
 CREATE TABLE Teachers
 (
@@ -141,4 +160,4 @@ CREATE TABLE ResultsHW
 );
 --DROP TABLE Exams, Grades, ResultsHW, Homeworks, Schedule;
 
---DROP TABLE Exams, Grades, ResultsHW, Homeworks, Schedule, SubjectsMajorsRelation, TeachersSubjectsRelation, RequiredSubjects, DependentSubjects, Teachers, Subjects, Students, Groups, Majors;
+--DROP TABLE Exams, Grades, ResultsHW, Homeworks, Schedule, SubjectsMajorsRelation, TeachersSubjectsRelation, RequiredSubjects, DependentSubjects, Teachers, Subjects, Students, Groups, Majors, StudyForms, StudyDays, StudyTime;
