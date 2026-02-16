@@ -1,0 +1,5 @@
+--SQLQuery2-SELECT.sql
+
+USE PV_521;
+
+SELECT * FROM Majors;
