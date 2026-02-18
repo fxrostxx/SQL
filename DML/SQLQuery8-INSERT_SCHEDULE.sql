@@ -46,3 +46,5 @@ WHILE @current_date <= @end_date BEGIN
     END;
     SET @current_date = DATEADD(DAY, 1, @current_date);
 END;
+
+--SELECT * FROM Schedule;
