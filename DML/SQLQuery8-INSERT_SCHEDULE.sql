@@ -1,4 +1,4 @@
---SQLQuery7-INSERT_SCHEDULE.sql
+--SQLQuery8-INSERT_SCHEDULE.sql
 
 USE PV_521_Import;
 
