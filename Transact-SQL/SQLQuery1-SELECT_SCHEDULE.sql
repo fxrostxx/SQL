@@ -14,6 +14,7 @@ FROM Schedule, Groups, Teachers, Disciplines
 WHERE [group] = group_id
 AND   discipline = discipline_id
 AND   teacher = teacher_id
-AND   [group] = (SELECT group_id FROM Groups WHERE group_name = N'PV_521');
+AND   [group] = (SELECT group_id FROM Groups WHERE group_name = N'PV_521')
+ORDER BY [date] ASC;
 
 --DELETE FROM Schedule WHERE [group] = (SELECT group_id FROM Groups WHERE group_name = N'PV_521');
