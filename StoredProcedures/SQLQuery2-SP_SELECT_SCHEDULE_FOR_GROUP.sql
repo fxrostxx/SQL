@@ -15,7 +15,6 @@ BEGIN
         [День недели]   = DATENAME(WEEKDAY, [date]),
         [Дата]          = [date],
         [Время]         = [time],
-        [День]          = DATENAME(WEEKDAY, [date]),
         [Статус]        = IIF(spent = 1, N'Проведено', N'Запланировано')
     FROM Schedule, Groups, Teachers, Disciplines
     WHERE [group] = @group_id
