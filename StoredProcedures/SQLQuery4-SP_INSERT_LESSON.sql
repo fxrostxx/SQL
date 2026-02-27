@@ -4,18 +4,20 @@ USE PV_521_Import;
 SET DATEFIRST 1;
 GO
 
-CREATE PROCEDURE SP_InsertLesson
-	@group_name         AS NCHAR(10),
-	@discipline_name    AS NVARCHAR(150),
-	@teacher_first_name AS NVARCHAR(50),
-	@date               AS DATE,
-	@time               AS TIME
+CREATE OR ALTER PROCEDURE SP_InsertLesson
+	@group         AS INT,
+	@discipline    AS SMALLINT,
+	@teacher       AS SMALLINT,
+	@date          AS DATE,
+	@time          AS TIME OUTPUT,
+	@lesson_number AS INT  OUTPUT
 AS
 BEGIN
-	DECLARE @group      AS INT      = (SELECT group_id          FROM Groups      WHERE group_name      LIKE @group_name);
-	DECLARE @discipline AS SMALLINT = (SELECT discipline_id     FROM Disciplines WHERE discipline_name LIKE @discipline_name);
-	DECLARE @teacher    AS SMALLINT = (SELECT teacher_id        FROM Teachers    WHERE first_name      LIKE @teacher_first_name);
-
+	PRINT(FORMATMESSAGE(N'%i %s %s %s', @lesson_number, CAST(@date AS VARCHAR(24)), DATENAME(WEEKDAY, @date), CAST(@time AS VARCHAR(24))));
 	IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [date] = @date AND [time] = @time AND [group] = @group)
+	BEGIN
 		INSERT Schedule VALUES (@group, @discipline, @teacher, @date, @time, IIF(@date < GETDATE(), 1, 0));
+		SET @lesson_number = @lesson_number + 1;
+	END
+	SET @time = DATEADD(MINUTE, 95, @time);
 END

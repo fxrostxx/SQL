@@ -12,12 +12,16 @@ ALTER PROCEDURE SP_InsertScheduleFullTime
 AS
 BEGIN
 	DECLARE @group             AS INT      = (SELECT group_id          FROM Groups      WHERE group_name      LIKE @group_name);
+	DECLARE @discipline        AS SMALLINT = (SELECT discipline_id     FROM Disciplines WHERE discipline_name LIKE @discipline_name);
+	DECLARE @teacher           AS SMALLINT = (SELECT teacher_id        FROM Teachers    WHERE first_name      LIKE @teacher_first_name);
 	DECLARE @number_of_lessons AS TINYINT  = (SELECT number_of_lessons FROM Disciplines WHERE discipline_name LIKE @discipline_name);
-	DECLARE @lesson_number     AS TINYINT  = 0;
+	DECLARE @lesson_number     AS TINYINT  = dbo.CountLessons(@group, @discipline);
 	DECLARE @date              AS DATE     = @start_date;
 	DECLARE @start_time        AS TIME     = (SELECT start_time        FROM Groups      WHERE group_id        =    @group);
 
 	PRINT(@group);
+	PRINT(@discipline);
+	PRINT(@teacher);
 	PRINT(@number_of_lessons);
 	PRINT(@start_date);
 	PRINT(@start_time);
@@ -27,18 +31,12 @@ BEGIN
 	WHILE @lesson_number < @number_of_lessons
 	BEGIN
 	    SET @time = @start_time;
-		PRINT(FORMATMESSAGE(N'%i %s %s %s', @lesson_number, CAST(@date AS VARCHAR(24)), DATENAME(WEEKDAY, @date), CAST(@time AS VARCHAR(24))));
-		EXEC SP_InsertLesson @group_name, @discipline_name, @teacher_first_name, @date, @time;
-		SET @lesson_number = @lesson_number + 1;
-		SET @time = DATEADD(MINUTE, 95, @start_time);
-	
-		PRINT(FORMATMESSAGE(N'%i %s %s %s', @lesson_number, CAST(@date AS VARCHAR(24)), DATENAME(WEEKDAY, @date), CAST(@time AS VARCHAR(24))));
-		EXEC SP_InsertLesson @group_name, @discipline_name, @teacher_first_name, @date, @time;
-		SET @lesson_number = @lesson_number + 1;
-	
+
+		EXEC SP_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
+		EXEC SP_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
+
 		DECLARE @day AS TINYINT = DATEPART(WEEKDAY, @date);
 		PRINT(@day);
 		SET @date = DATEADD(DAY, IIF(@day = 5, 3, 2), @date);
 	END
-
 END
