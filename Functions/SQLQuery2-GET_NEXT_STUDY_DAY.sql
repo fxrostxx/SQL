@@ -4,17 +4,20 @@ USE PV_521_Import;
 SET DATEFIRST 1;
 GO
 
-CREATE OR ALTER FUNCTION GetNextStudyDay(@group AS INT, @date AS DATE) RETURNS TINYINT
+CREATE OR ALTER FUNCTION GetNextStudyDay(@group_name AS NCHAR(10)) RETURNS TINYINT
 AS
 BEGIN
-	DECLARE @days        AS TINYINT = (SELECT weekdays FROM Groups WHERE group_id = @group);
-	DECLARE @next_day    AS TINYINT = DATEPART(WEEKDAY, @date);
-	DECLARE @counter     AS TINYINT = 0;
+	DECLARE @group_id  AS INT     = (SELECT group_id    FROM Groups   WHERE group_name = @group_name);
+	DECLARE @weekdays  AS TINYINT = (SELECT weekdays    FROM Groups   WHERE group_id = @group_id);
+	DECLARE @last_date AS DATE    = (SELECT MAX([date]) FROM Schedule WHERE [group] = @group_id);
+	DECLARE @last_day  AS TINYINT = DATEPART(WEEKDAY, @last_date);
+	DECLARE @day       AS TINYINT = @last_day + 1;
+	DECLARE @counter   AS TINYINT = 0;
 
 	WHILE @counter < 7
 	BEGIN
-		SET @next_day = @next_day % 7 + 1;
-		IF (@days & POWER(2, @next_day - 1) != 0) RETURN @next_day;
+		SET @day = @day % 7 + 1;
+		IF (@weekdays & POWER(2, @day - 1) != 0) RETURN @day;
 		SET @counter += 1;
 	END
 	RETURN NULL;
