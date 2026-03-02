@@ -14,7 +14,7 @@ BEGIN
 	WHILE @counter < 7
 	BEGIN
 		SET @next_day = @next_day % 7 + 1;
-		IF (@days & POWER(@next_day - 1, 2) != 0) RETURN @next_day;
+		IF (@days & POWER(2, @next_day - 1) != 0) RETURN @next_day;
 		SET @counter += 1;
 	END
 	RETURN NULL;
@@ -25,9 +25,10 @@ GO
 CREATE OR ALTER FUNCTION GetNextStudyDate(@group AS INT, @date AS DATE) RETURNS DATE
 AS
 BEGIN
-	WHILE DATEPART(WEEKDAY, @date) != dbo.GetNextStudyDay(@group, @date)
+	WHILE 1 = 1
 	BEGIN
 		SET @date = DATEADD(DAY, 1, @date);
+		IF DATEPART(WEEKDAY, @date) = dbo.GetNextStudyDay(@group, @date) RETURN @date;
 	END
 	RETURN @date;
 END

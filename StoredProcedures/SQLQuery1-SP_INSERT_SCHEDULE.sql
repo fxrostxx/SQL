@@ -37,6 +37,6 @@ BEGIN
 
 		DECLARE @day AS TINYINT = DATEPART(WEEKDAY, @date);
 		PRINT(@day);
-		SET @date = DATEADD(DAY, IIF(@day = 5, 3, 2), @date);
+		SET @date = dbo.GetNextStudyDate(@group, @date);
 	END
 END
