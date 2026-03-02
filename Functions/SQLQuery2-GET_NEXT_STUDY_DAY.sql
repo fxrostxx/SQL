@@ -24,5 +24,9 @@ GO
 CREATE OR ALTER FUNCTION GetNextStudyDate(@group AS INT, @date AS DATE) RETURNS DATE
 AS
 BEGIN
-	RETURN DATEADD(DAY, GetNextStudyDay(@group, @date), @date);
+	WHILE DATEPART(WEEKDAY, @date) != GetNextStudyDay(@group, @date)
+	BEGIN
+		@date = DATEADD(DAY, 1, @date);
+	END
+	RETURN @date;
 END
