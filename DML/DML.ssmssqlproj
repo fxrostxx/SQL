@@ -75,6 +75,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery8-INSERT_SCHEDULE.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery9-SELECT_DAYS_OFF.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery9-SELECT_DAYS_OFF.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">

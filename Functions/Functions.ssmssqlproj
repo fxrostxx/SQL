@@ -27,6 +27,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery0-CHECK.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery0-HOLIDAYS_CHECK.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0-HOLIDAYS_CHECK.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery1-COUNT_LESSONS.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
@@ -38,6 +44,12 @@
           <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery2-GET_NEXT_STUDY_DAY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery3-GET_NEW_YEAR_HOLIDAYS_START_DATE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery3-GET_NEW_YEAR_HOLIDAYS_START_DATE.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
