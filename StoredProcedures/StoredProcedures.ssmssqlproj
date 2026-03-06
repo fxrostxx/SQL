@@ -45,6 +45,18 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery4-SP_INSERT_LESSON.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery5-SP_INSERT_HOLIDAYS_FOR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery5-SP_INSERT_HOLIDAYS_FOR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery6-SP_INSERT_ALL_HOLIDAYS_FOR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FXROSTXX-PC\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FXROSTXX-PC\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery6-SP_INSERT_ALL_HOLIDAYS_FOR.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
