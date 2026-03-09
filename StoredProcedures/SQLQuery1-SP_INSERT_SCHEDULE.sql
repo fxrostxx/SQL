@@ -36,8 +36,8 @@ BEGIN
 		EXEC SP_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
 		EXEC SP_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
 
-		DECLARE @day AS TINYINT = DATEPART(WEEKDAY, @date);
-		PRINT(@day);
-		SET @date = dbo.GetNextStudyDate(@group_name, @date);
+		--DECLARE @day AS TINYINT = DATEPART(WEEKDAY, @date);
+		--PRINT(@day);
+		--SET @date = dbo.GetNextStudyDate(@group_name, @date);
 	END
 END
