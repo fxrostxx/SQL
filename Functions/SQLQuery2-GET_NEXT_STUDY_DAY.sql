@@ -36,5 +36,6 @@ BEGIN
 	IF @interval < 0   SET @interval = 7 + @interval;
 	IF @interval = 0   SET @interval = 7;
 	DECLARE @next_date AS DATE       = DATEADD(DAY, @interval, @date);
+	IF EXISTS (SELECT holiday FROM DaysOFF WHERE [date] = @next_date) SET @next_date = dbo.GetNextStudyDate(@group_name, @next_date);
 	RETURN @next_date;
 END
